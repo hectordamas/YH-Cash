@@ -13,7 +13,7 @@
                         @csrf
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold text-primary">Nombre:</label>
-                            <input type="text" class="form-control" name="name" id="name">
+                            <input type="text" class="form-control" name="name" id="name" required>
                         </div>
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold text-primary">Moneda:</label>

@@ -9,6 +9,7 @@ use App\Models\Provider;
 use App\Models\Contable;
 use App\Models\Bank;
 use App\Models\Expense;
+use Carbon\Carbon;
 
 class ExpensesController extends Controller
 {
@@ -47,12 +48,24 @@ class ExpensesController extends Controller
     public function store(Request $request)
     {
         $cash = Cash::find($request->input('caja'));
+
         if($cash){
+            if($cash->closure_date){
+                //$fechaDeHoy = Carbon::now();
+                $fechaSolicitud = Carbon::parse($request->fecha);
+                $fechaDeCierre = Carbon::parse($cash->closure_date);
+
+                if($fechaDeCierre->gt($fechaSolicitud)){
+                    return redirect()->back()->with('error', 'La fecha que intentas ingresar es anterior o igual al ultimo cierre hecho para la caja: ' . $cash->name);
+                }
+            }
+        }
+        /*if($cash){
             $total = $cash->entries->sum('monto') - ($cash->expenses->sum('monto') + $request->input('monto'));
             if($total <= 0){
                 return redirect()->back()->with('error', 'Esta Caja no dispone de efectivo suficiente para completar la operación!');
             }
-        }
+        }*/
 
         $expense = new Expense();
         $expense->fecha = $request->input('fecha');

@@ -16,13 +16,10 @@ class AjaxController extends Controller
         $banks = Bank::all();
 
         if($request->formaDePago == 'Efectivo'){
-
             foreach($cashes as $c){
                 $output = $output . '<option value="'. $c->id .'">"'. $c->name .'"</option>';
             }
-
         }else{
-
             foreach($banks as $b){
                 $output = $output . '<option value="'. $b->id .'">"'. $b->name .'"</option>';
             }
@@ -32,5 +29,13 @@ class AjaxController extends Controller
             'output' => $output
         ]);
 
+    }
+
+    public function getCashData(Request $request){
+        $cash = Cash::find($request->id);
+
+        return response()->json([
+            'total' => $cash->entries->sum('monto') - $cash->expenses->sum('monto') 
+        ]);
     }
 }

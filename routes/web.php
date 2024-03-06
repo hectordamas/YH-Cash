@@ -61,4 +61,7 @@ Route::middleware(['auth'])->group(function(){
 
     Route::post('/changePassword/{id}', [App\Http\Controllers\ActionsController::class, 'changePassword']);
 
+    Route::get('/closure/create/{id}', [App\Http\Controllers\ClosureController::class, 'create']);
+    Route::post('/closure/store', [App\Http\Controllers\ClosureController::class, 'store']);
+
 });

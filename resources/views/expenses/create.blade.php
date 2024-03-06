@@ -6,7 +6,8 @@
             <div class="card shadow">
                 <div class="card-header font-weight-bold text-primary">Registrar Pago</div>
                 <div class="card-body">
-                    <form action="{{ route('expenses.store') }}" method="post" class="row">
+                    <input type="hidden" name="totalCash" id="totalCash" value="0">
+                    <form action="{{ route('expenses.store') }}" method="post" class="row expensesCreate">
                         @csrf
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold">Fecha:</label>

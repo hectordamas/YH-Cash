@@ -17,12 +17,12 @@
                                 $totalExpenses = $cash->expenses->sum('monto');
                                 $total = $totalEntries - $totalExpenses;
                             @endphp
-                            <a href="{{ route('cashes.show', ['cash' => $cash->id]) }}" class="col-md-3">
+                            <a href="{{ route('cashes.show', ['cash' => $cash->id]) }}" class="col-md-4">
                                 <div class="card bg-dark text-light mb-3 px-2 border-dark">
                                     <div class="card-body">
-                                        <div class="row align-items-center" style="justify-content:space-between;">
+                                        <div class="row align-items-center" style="justify-content: space-between;">
                                             <span class="font-weight-bold text-uppercase text-small" style="font-size:13px;"><i class="far fa-money-bill-alt mr-1"></i> {{$cash->name}}:</span>
-                                            <span>{{$cash->currency}} {{ number_format($total, 2, '.', ',') }}</span>   
+                                            <span class="{{ $total < 0 ? 'badge badge-danger' : 'badge badge-primary' }}">{{$cash->currency}} {{ number_format($total, 2, '.', ',') }}</span>   
                                         </div>
                                     </div>
                                 </div>

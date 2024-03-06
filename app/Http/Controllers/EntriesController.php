@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Entry;
+use App\Models\Cash;
 
 class EntriesController extends Controller
 {
@@ -18,6 +19,7 @@ class EntriesController extends Controller
 
     public function store(Request $request)
     {
+
         $entry = new Entry();
         $entry->monto = $request->input('monto');
         $entry->descripcion = $request->input('descripcion');

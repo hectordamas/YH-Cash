@@ -28,7 +28,7 @@ class ContableController extends Controller
         $contable = new Contable();
         $contable->type = $request->type;
         $contable->name= $request->name;
-        $contable->number = $request->number;
+        $contable->codigo = $request->codigo;
         $contable->save();
 
         return redirect()->back()->with('message', 'Cuenta creada con éxito!');
@@ -56,7 +56,7 @@ class ContableController extends Controller
         $contable = Contable::find($id);
         $contable->type = $request->type;
         $contable->name= $request->name;
-        $contable->number = $request->number;
+        $contable->codigo = $request->codigo;
         $contable->save();
 
         return redirect()->back()->with('message', 'Cuenta creada con éxito!');

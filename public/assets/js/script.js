@@ -78,6 +78,49 @@ $(document).ready(function(){
         }else{
             return false;
         }
-
     });
+
+    const getCashData = async (id) => {
+        await fetch(`/api/getCashData`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With' : 'XMLHttpRequest',
+            },
+            body: JSON.stringify({id})
+        })
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(res)
+            res.total && $('#totalCash').val(res.total)
+        })
+        .catch(err => console.log(err))
+    }
+
+    $('#cash').on('select2:select', function() {
+        var id = $('#cash').val()
+        getCashData(id)
+    })
+
+    $('.expensesCreate').on('submit', function() {
+        totalCaja = parseFloat($('#totalCash').val())
+        monto = parseFloat($('#monto').val())
+
+        if(($('#cash').val() || $('#cash').prop('disabled')) && (totalCaja - monto < 0)){
+            if(confirm('El monto establecido es mayor al saldo de la caja, estas seguro de ejecutar esta accion?')){
+                return true
+            }else{
+                return false
+            }
+        }
+    })
+
+    $('.closureCreate').on('submit', function()  {
+        if(confirm('Estas seguro de ejecutar esta accion? al cerrar esta caja los efectos seran irreversibles, no podras modificar registros anteriores a la fecha establecida')){
+            return true
+        }else{
+            return false
+        }
+    })
+
 });

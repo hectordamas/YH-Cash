@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('getBanksOrCashes', [App\Http\Controllers\Api\AjaxController::class, 'getBanksOrCashes']);
+Route::post('getCashData', [App\Http\Controllers\Api\AjaxController::class, 'getCashData']);

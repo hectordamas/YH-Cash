@@ -11,6 +11,18 @@
             <div class="card shadow">
                 <div class="card-header font-weight-bold text-primary">Detalles de {{$cash->name}}: <span class="text-dark">{{$cash->currency}} {{number_format($total, 2, '.', ',')}}</span></div>
                 <div class="card-body">
+
+                    <div class="col-md-12 mb-3 text-right">
+                        <a href="/closure/create/{{$cash->id}}" class="btn btn-primary">
+                            <i class="fas fa-cash-register"></i> Cierre de Caja
+                        </a>
+                    </div>
+
+                    <div class="col-md-12">
+                        
+                    </div>
+            
+                    
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                       <li class="nav-item">
                         <a class="nav-link active font-weight-bold" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Entradas</a>
