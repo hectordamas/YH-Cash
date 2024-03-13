@@ -12,7 +12,6 @@
 .table thead th, .table tr td{
     text-align: center !important;
     vertical-align: middle;
-    font-size: 13px;
 }
 .dt-button{
     display: inline-block !important;
