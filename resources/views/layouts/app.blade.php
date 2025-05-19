@@ -32,10 +32,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center my-5" href="{{ url('home') }}">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-cash-register"></i>                
-                </div>
-                <div class="sidebar-brand-text mx-3">{{ env('APP_NAME') }}</div>
+                <img src="{{ asset('logo_light.png') }}" width="180px" alt="">
             </a>
 
             <!-- Divider -->

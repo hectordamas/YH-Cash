@@ -12,8 +12,8 @@
                     <div class="row">
                         <div class="col-lg-6 d-flex align-items-center" style="height:500px;">
                             <div class="p-5 w-100">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Inicia Sesión!</h1>
+                                <div class="text-center mb-5">
+                                    <img src="{{ asset('logo_dark.png') }}" width="190px" alt="{{ env('APP_NAME') }} Logo">
                                 </div>
                                 <form class="user" method="POST" action="{{ route('login') }}">
                                     @csrf

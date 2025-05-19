@@ -24,9 +24,9 @@ return new class extends Migration
         });
 
         $user = new \App\Models\User();
-        $user->name = 'Héctor Damas'; 
-        $user->email = 'hectorgabrieldm@hotmail.com';
-        $user->password = bcrypt('alinware98_');
+        $user->name = env('USER_NAME');
+        $user->email = env('USER_EMAIL');
+        $user->password = env('USER_PASSWORD');
         $user->save();
     }
 
