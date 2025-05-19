@@ -42,7 +42,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('home') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Escritorio</span></a>
+                    <span>Panel Principal</span></a>
             </li>
 
             <!-- Divider -->
