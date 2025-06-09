@@ -8,7 +8,7 @@
                 <div class="card-header text-primary font-weight-bold">
                     Resultados de tu consulta
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table table-striped datatable">
                         <thead class="table-dark">
                             <tr>
