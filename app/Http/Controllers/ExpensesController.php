@@ -155,6 +155,9 @@ class ExpensesController extends Controller
 
     public function destroy($id)
     {
-        //
+       $expense = Expense::findOrFail($id);
+       $expense->delete();
+
+       return redirect()->back()->with('message', 'Pago Eliminado con Éxito!');
     }
 }

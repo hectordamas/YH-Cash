@@ -32,7 +32,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center my-5" href="{{ url('home') }}">
-                <img src="{{ asset('logo_light.png') }}" width="180px" alt="">
+                <img src="{{ asset('logo_light.png') }}" style="max-width: 180px; width:100%;" alt="">
             </a>
 
             <!-- Divider -->
@@ -63,7 +63,6 @@
                         @if(in_array(Auth::user()->role, ['Analista', 'Gerente']))
                         <a class="collapse-item" href="{{ route('expenses.create') }}">Registrar Pago</a>
                         @endif
-                        <a class="collapse-item" href="{{ url('revertidos') }}">Reversados</a>
                     </div>
                 </div>
             </li>

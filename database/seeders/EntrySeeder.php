@@ -14,6 +14,6 @@ class EntrySeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Entry::factory(3000)->create();
+        \App\Models\Entry::factory(10)->create();
     }
 }

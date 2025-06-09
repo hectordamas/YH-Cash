@@ -42,6 +42,13 @@ return new class extends Migration
         $user->password = bcrypt('123456789');
         $user->role = 'Analista';
         $user->save();
+
+        $user = new User();
+        $user->name = 'Analista2';
+        $user->email = 'analista22025@gmail.com';
+        $user->password = bcrypt('123456789');
+        $user->role = 'Analista';
+        $user->save();
     }
 
     /**

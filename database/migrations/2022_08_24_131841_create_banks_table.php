@@ -19,6 +19,15 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('currency')->nullable();
         });
+
+        $bancos = ["Chase", "BOFA", "Wells Fargo", "CityBank", "Citigroup"];
+
+        for($i = 0; $i < count($bancos); $i++){
+            $bank = new \App\Models\Bank();
+            $bank->name = $bancos[$i];
+            $bank->currency = '$';
+            $bank->save();
+        }
     }
 
     /**

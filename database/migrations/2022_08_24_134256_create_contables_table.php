@@ -61,9 +61,9 @@ return new class extends Migration
             (36, '2022-06-10 12:00:36', '2022-06-10 12:00:36', 'B006', 'Articulos de Limpieza', 'Egreso'),
             (37, '2022-06-10 12:00:36', '2022-06-10 12:00:36', 'C001', 'Proyecto Piscina', 'Egreso'),
             (38, '2022-06-10 12:00:36', '2022-06-10 12:00:36', 'C002', 'Proyecto Conexión Casa Rosada', 'Egreso'),
-            (40, '2022-06-10 12:00:36', '2022-06-10 12:00:36', 'C004', 'Proyecto Bar Caracas', 'Egreso'),
-            (41, '2022-06-10 12:00:36', '2022-06-10 12:00:36', 'C005', 'Reparación de Chiller', 'Egreso'),
-            (42, '2022-06-10 12:00:36', '2022-06-10 12:00:36', 'C006', 'Otros Proyectos', 'Egreso');");
+            (39, '2022-06-10 12:00:36', '2022-06-10 12:00:36', 'C004', 'Proyecto Bar Caracas', 'Egreso'),
+            (40, '2022-06-10 12:00:36', '2022-06-10 12:00:36', 'C005', 'Reparación de Chiller', 'Egreso'),
+            (41, '2022-06-10 12:00:36', '2022-06-10 12:00:36', 'C006', 'Otros Proyectos', 'Egreso');");
     }
 
     /**

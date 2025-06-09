@@ -54,4 +54,12 @@ class EntriesController extends Controller
 
         return redirect()->back()->with('message', 'Entrada Registrada con Éxito!');
     }
+
+    public function destroy($id)
+    {
+       $entry = Entry::findOrFail($id);
+       $entry->delete();
+
+       return redirect()->back()->with('message', 'Entrada Eliminada con Éxito!');
+    }
 }

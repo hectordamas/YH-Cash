@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Bank;
 
 class BankSeeder extends Seeder
 {
@@ -15,10 +14,10 @@ class BankSeeder extends Seeder
      */
     public function run()
     {
-        $bancos = ["Panorama Hotels Group LLC", "Hernamos Mayor LLC", "Operadora Interparking"];
+        $bancos = ["Chase", "BOFA", "Wells Fargo"];
 
         for($i = 0; $i < count($bancos); $i++){
-            $bank = new Bank();
+            $bank = new \App\Models\Bank();
             $bank->name = $bancos[$i];
             $bank->currency = '$';
             $bank->save();

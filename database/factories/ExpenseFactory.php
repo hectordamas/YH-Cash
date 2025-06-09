@@ -23,11 +23,11 @@ class ExpenseFactory extends Factory
             'numero' => '12345',
             'concepto' => $this->faker->text,
             'descripcion' => $this->faker->text,
-            'company_id' => $this->faker->numberBetween(1, 2),
+            'company_id' => $this->faker->numberBetween(1, 3),
             'bank_id' => $this->faker->numberBetween(1, 3),
-            'cash_id' => $this->faker->numberBetween(1, 9),
-            'provider_id' => $this->faker->numberBetween(1, 403),
-            'contable_id' => $this->faker->numberBetween(1, 42),
+            'cash_id' => $this->faker->numberBetween(1, 6),
+            'provider_id' => $this->faker->numberBetween(1, 3),
+            'contable_id' => $this->faker->numberBetween(1, 41),
             'recibo' => time() . $this->faker->numberBetween(1, 1000)
         ];
     }

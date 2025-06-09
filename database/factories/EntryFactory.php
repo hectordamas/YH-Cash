@@ -17,8 +17,8 @@ class EntryFactory extends Factory
     public function definition()
     {
         return [
-            'contable_id' => $this->faker->numberBetween(1, 42),
-            'cash_id' => $this->faker->numberBetween(1, 9),
+            'contable_id' => $this->faker->numberBetween(1, 41),
+            'cash_id' => $this->faker->numberBetween(1, 6),
             'monto' => $this->faker->randomFloat(2, 1, 2000),
             'descripcion' => $this->faker->text,
         ];
