@@ -9,7 +9,7 @@
                     Resultados de tu consulta
                 </div>
                 <div class="card-body table-responsive">
-                    <table class="table table-striped datatable" style="width:100%">
+                    <table class="table table-striped datatable">
                         <thead class="table-dark">
                             <tr>
                                 <th>#</th>
