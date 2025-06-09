@@ -26,7 +26,7 @@ return new class extends Migration
         $user = new \App\Models\User();
         $user->name = env('USER_NAME');
         $user->email = env('USER_EMAIL');
-        $user->password = env('USER_PASSWORD');
+        $user->password = bcrypt(env('USER_PASSWORD'));
         $user->save();
     }
 

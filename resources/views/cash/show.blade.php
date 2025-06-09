@@ -12,11 +12,13 @@
                 <div class="card-header font-weight-bold text-primary">Detalles de {{$cash->name}}: <span class="text-dark">{{$cash->currency}} {{number_format($total, 2, '.', ',')}}</span></div>
                 <div class="card-body">
 
+                    @if(Auth::user()->role == 'Gerente')
                     <div class="col-md-12 mb-3 text-right">
                         <a href="/closure/create/{{$cash->id}}" class="btn btn-primary">
                             <i class="fas fa-cash-register"></i> Cierre de Caja
                         </a>
                     </div>
+                    @endif
 
                     <div class="col-md-12">
                         

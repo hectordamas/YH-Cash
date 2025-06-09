@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return redirect('/login');
 });
@@ -29,6 +18,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('cashes', App\Http\Controllers\CashController::class);
     Route::resource('history', App\Http\Controllers\HistoryController::class);
     Route::resource('contables', App\Http\Controllers\ContableController::class);
+    Route::resource('users', App\Http\Controllers\UserController::class);
 
     Route::get('/consultar-pagos', function(){
         return view('expenses.filter', [

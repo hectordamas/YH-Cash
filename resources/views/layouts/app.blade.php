@@ -60,7 +60,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pagos:</h6>
                         <a class="collapse-item" href="{{ url('consultar-pagos') }}">Consultar Pagos</a>
+                        @if(in_array(Auth::user()->role, ['Analista', 'Gerente']))
                         <a class="collapse-item" href="{{ route('expenses.create') }}">Registrar Pago</a>
+                        @endif
                         <a class="collapse-item" href="{{ url('revertidos') }}">Reversados</a>
                     </div>
                 </div>
@@ -78,8 +80,13 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Cajas:</h6>
                         <a class="collapse-item" href="{{ url('consultar-cajas') }}">Consultar Cajas</a>
+                        @if(in_array(Auth::user()->role, ['Gerente']))
                         <a class="collapse-item" href="{{ route('entries.create') }}">Registrar Entrada</a>
+                        @endif
+
+                        @if(Auth::user()->role == 'Gerente')
                         <a class="collapse-item" href="{{ route('cashes.create') }}">Crear Caja</a>
+                        @endif
                     </div>
                 </div>
             </li>
@@ -94,13 +101,15 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Proveedores:</h6>
-                        <a class="collapse-item" href="{{ route('providers.create') }}">Registrar Proveedor</a>
+                        @if(Auth::user()->role == 'Gerente')
+                            <a class="collapse-item" href="{{ route('providers.create') }}">Registrar Proveedor</a>
+                        @endif
                         <a class="collapse-item" href="{{ route('providers.index') }}">Directorio</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+           <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount"
                     aria-expanded="true" aria-controls="collapseAccount">
@@ -117,12 +126,31 @@
             </li>
 
 
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ url('history-filter') }}" >
                     <i class="fas fa-history"></i>
                     <span>Histórico de Operaciones</span>
                 </a>
             </li>
+
+
+            @if(Auth::user()->role == 'Gerente')
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                    aria-expanded="true" aria-controls="collapseUsers">
+                    <i class="fas fa-users"></i>
+                    <span>Usuarios</span>
+                </a>
+                <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Usuarios:</h6>
+                        <a class="collapse-item" href="{{ route('users.create') }}">Registrar Usuario</a>
+                        <a class="collapse-item" href="{{ route('users.index') }}">Todos los Usuarios</a>
+                    </div>
+                </div>
+            </li>
+            @endif
 
 
 
