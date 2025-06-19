@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('history', App\Http\Controllers\HistoryController::class);
     Route::resource('contables', App\Http\Controllers\ContableController::class);
     Route::resource('users', App\Http\Controllers\UserController::class);
+    Route::resource('settings', App\Http\Controllers\SettingsController::class);
 
     Route::get('/consultar-pagos', function(){
         return view('expenses.filter', [
@@ -53,5 +54,6 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/closure/create/{id}', [App\Http\Controllers\ClosureController::class, 'create']);
     Route::post('/closure/store', [App\Http\Controllers\ClosureController::class, 'store']);
+
 
 });

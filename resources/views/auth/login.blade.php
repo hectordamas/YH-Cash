@@ -13,7 +13,7 @@
                         <div class="col-lg-6 d-flex align-items-center" style="height:500px;">
                             <div class="p-5 w-100">
                                 <div class="text-center mb-5">
-                                    <img src="{{ asset('logo_dark.png') }}" width="190px" alt="{{ env('APP_NAME') }} Logo">
+                                    <img src="{{ asset($settings['logo_dark'] ?? 'assets/logo_dark.png') }}" width="190px" alt="{{ env('APP_NAME') }} Logo">
                                 </div>
                                 <form class="user" method="POST" action="{{ route('login') }}">
                                     @csrf
@@ -51,9 +51,8 @@
                             </div>
                         </div>
                         <div class="col-lg-6 d-none d-lg-flex justify-content-center bg-login-image">
-                            <video autoplay muted loop style="position: absolute; left: 0; bottom: 0;
-                                min-width: 100%; min-height: 100%;">
-                                <source src="{{ url('video.mp4') }}" type="video/mp4">
+                            <video autoplay muted loop style="position: absolute; left: 0; bottom: 0; min-width: 100%; min-height: 100%;">
+                                <source src="{{ asset($settings['login_video'] ?? 'assets/video.mp4') }}" type="video/mp4">
                             </video>
                         </div>
                     </div>

@@ -21,8 +21,11 @@
     <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
 
 </head>
+@php
+    $sidebarBg = $settings['sidebar_color'] ?? '#343a40';
+@endphp
 
-<body class="bg-gradient-dark">
+<body  style="background-color: {{ $sidebarBg }}; ">
     
     @yield('content')
     

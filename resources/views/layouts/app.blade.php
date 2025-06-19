@@ -10,8 +10,6 @@
     <meta name="author" content="">
 
     <title>{{ env('APP_NAME') }}</title>
-
-    <!-- Custom fonts for this template-->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
@@ -28,11 +26,12 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion no-print" id="accordionSidebar">
+        @php $sidebarColor = $settings['sidebar_color'] ?? '#343a40'; @endphp
+        <ul class="navbar-nav sidebar sidebar-dark accordion no-print" id="accordionSidebar" style="background-color: {{ $sidebarColor }}">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center my-5" href="{{ url('home') }}">
-                <img src="{{ asset('logo_light.png') }}" style="max-width: 180px; width:100%;" alt="">
+                <img src="{{ asset($settings['logo_light'] ?? 'assets/logo_light.png') }}" style="max-width: 180px; width:100%;" alt="Logo">
             </a>
 
             <!-- Divider -->
@@ -148,6 +147,13 @@
                         <a class="collapse-item" href="{{ route('users.index') }}">Todos los Usuarios</a>
                     </div>
                 </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ url('settings') }}" >
+                    <i class="fas fa-cog"></i>
+                    <span>Configuración</span>
+                </a>
             </li>
             @endif
 
@@ -281,6 +287,24 @@
         Swal.fire({icon:'success', title:'', text: "{{session('message')}}", confirmButtonText: 'OK', confirmButtonColor: '#28a745'})
     </script>
     @endif
+
+    @if ($errors->any())
+<script>
+    let errorMessages = `
+        @foreach ($errors->all() as $error)
+            • {{ $error }}<br>
+        @endforeach
+    `;
+
+    Swal.fire({
+        icon: 'error',
+        title: '¡Corrige los siguientes errores!',
+        html: errorMessages,
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#dc3545'
+    });
+</script>
+@endif
 
     @yield('chart')
 </body>
