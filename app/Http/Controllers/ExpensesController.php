@@ -47,6 +47,21 @@ class ExpensesController extends Controller
 
     public function store(Request $request)
     {
+
+        $validated = $request->validate([
+            'fecha' => 'required',
+            'monto' => 'required|min:0.01',
+            'forma-de-pago' => 'required',
+            'numero' => 'required',
+            'concepto' => 'required',
+            'descripcion' => 'required',
+            'empresa' => 'required',
+            'banco' => 'nrequired',
+            'caja' => 'required',
+            'proveedor' => 'required',
+            'contable' => 'required',
+        ]);
+
         $cash = Cash::find($request->input('caja'));
 
         if($cash){
@@ -60,12 +75,6 @@ class ExpensesController extends Controller
                 }
             }
         }
-        /*if($cash){
-            $total = $cash->entries->sum('monto') - ($cash->expenses->sum('monto') + $request->input('monto'));
-            if($total <= 0){
-                return redirect()->back()->with('error', 'Esta Caja no dispone de efectivo suficiente para completar la operación!');
-            }
-        }*/
 
         $expense = new Expense();
         $expense->fecha = $request->input('fecha');
@@ -135,6 +144,21 @@ class ExpensesController extends Controller
 
     public function update(Request $request, $id)
     {
+        
+        $validated = $request->validate([
+            'fecha' => 'required',
+            'monto' => 'required|min:0.01',
+            'forma-de-pago' => 'required',
+            'numero' => 'required',
+            'concepto' => 'required',
+            'descripcion' => 'required',
+            'empresa' => 'required',
+            'banco' => 'nrequired',
+            'caja' => 'required',
+            'proveedor' => 'required',
+            'contable' => 'required',
+        ]);
+        
         $expense = Expense::find($id);
         $expense->fecha = $request->input('fecha');
         $expense->monto = $request->input('monto');

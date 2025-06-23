@@ -19,6 +19,10 @@ class EntriesController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'monto' => 'required|min:0.01',
+            'descripcion' => 'required',
+        ]);
 
         $entry = new Entry();
         $entry->monto = $request->input('monto');
@@ -45,6 +49,11 @@ class EntriesController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'monto' => 'required|min:0.01',
+            'descripcion' => 'required',
+        ]);
+
         $entry = new Entry();
         $entry->monto = $request->input('monto');
         $entry->descripcion = $request->input('descripcion');

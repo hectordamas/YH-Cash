@@ -12,19 +12,19 @@
 
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold">Monto:</label>
-                            <input type="number" name="monto" id="monto" class="form-control" step="any" value="{{$entry->monto}}">
+                            <input type="number" name="monto" id="monto" class="form-control" step="any" value="{{$entry->monto}}" required>
                             <span id="montoFormateado"></span>
                         </div>
 
 
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold">Descripción:</label>
-                            <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{$entry->descripcion}}">
+                            <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{$entry->descripcion}}" required>
                         </div>
 
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold">Cuenta de Ingreso:</label>
-                            <select name="contable" id="contable" class="form-control select2">
+                            <select name="contable" id="contable" class="form-control select2" required>
                                 <option value="{{$entry->contable->id}}">{{$entry->contable->codigo}} - {{$entry->contable->name}}</option>
                                 @foreach($contables as $c)
                                     <option value="{{ $c->id }}">{{$c->codigo}} - {{$c->name}}</option>
@@ -34,7 +34,7 @@
 
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold">Caja:</label>
-                            <select name="caja" id="cash" class="form-control select2">
+                            <select name="caja" id="cash" class="form-control select2" required>
                                 <option value="{{ isset($entry->cash) ? $entry->cash->id : '' }}">{{ isset($entry->cash) ? $entry->cash->name .' - ' . $entry->cash->currency : 'Seleccionar un Elemento' }}</option>
                                 @foreach($cashes as $c)
                                     <option value="{{ $c->id }}">{{ $c->name }} - {{$c->currency}}</option>

@@ -12,18 +12,18 @@
 
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold">Monto:</label>
-                            <input type="number" name="monto" id="monto" class="form-control" step="any">
+                            <input type="number" name="monto" id="monto" class="form-control" required step="any">
                             <span id="montoFormateado"></span>
                         </div>
 
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold">Descripción:</label>
-                            <input type="text" name="descripcion" id="descripcion" class="form-control">
+                            <input type="text" name="descripcion" id="descripcion" required class="form-control">
                         </div>
 
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold">Cuenta de Ingreso:</label>
-                            <select name="contable" id="contable" class="form-control select2">
+                            <select name="contable" id="contable" class="form-control select2" required>
                                 <option value="">Selecciona un Elemento</option>
                                 @foreach($contables as $c)
                                     <option value="{{ $c->id }}">{{$c->codigo}} - {{$c->name}}</option>
@@ -33,7 +33,7 @@
 
                         <div class="col-md-3 form-group">
                             <label for="" class="font-weight-bold">Caja:</label>
-                            <select name="caja" id="cash" class="form-control select2">
+                            <select name="caja" id="cash" class="form-control select2" required>
                                 <option value="">Selecciona un Elemento</option>
                                 @foreach($cashes as $c)
                                     <option value="{{ $c->id }}">{{ $c->name }} - {{$c->currency}}</option>
