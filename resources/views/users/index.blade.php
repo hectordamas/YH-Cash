@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-
+                    Listado de Usuarios
                 </div>
                 <div class="card-body">
                     <table class="table table-striped datatable" style="width:100%">
@@ -34,9 +34,9 @@
                                         <input 
                                             type="checkbox" 
                                             class="checkbox-config" 
-                                            data-codusuario="{{ $user->id }}" 
+                                            data-id="{{ $user->id }}" 
                                             data-field="blocked"
-                                            {{ $user->blocked ? '' : 'checked' }}
+                                            {{ $user->inactivo ? 'checked' : '' }}
                                         >  
                                     </td>
                                 </tr>
@@ -54,16 +54,16 @@
 <script>
     $(document).ready(function(){
         $('.checkbox-config').on('change', function(){
-            let codusuario = $(this).data('codusuario'); // ID del usuario
+            let id = $(this).data('id'); // ID del usuario
             let fieldName = $(this).data('field'); // Nombre del campo
             let check = $(this).is(':checked') ? 1 : 0; // Determinar el nuevo valor
-
+            console.log(id, check)
             $.ajax({
                 method: 'POST',
                 url: '{{ url("setUserConfig") }}', // Ruta para actualizar la configuración
                 data: {
                     _token: '{{ csrf_token() }}',
-                    codusuario: codusuario,
+                    id: id,
                     field: fieldName, 
                     value: check
                 },
