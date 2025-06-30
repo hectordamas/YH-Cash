@@ -16,6 +16,7 @@
                                 <th>Nombre</th>
                                 <th>E Mail</th>
                                 <th>Acciones</th>
+                                <th>Bloqueado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,6 +30,15 @@
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
+                                    <td>
+                                        <input 
+                                            type="checkbox" 
+                                            class="checkbox-config" 
+                                            data-codusuario="{{ $user->id }}" 
+                                            data-field="blocked"
+                                            {{ $user->blocked ? '' : 'checked' }}
+                                        >  
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -38,4 +48,33 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $('.checkbox-config').on('change', function(){
+            let codusuario = $(this).data('codusuario'); // ID del usuario
+            let fieldName = $(this).data('field'); // Nombre del campo
+            let check = $(this).is(':checked') ? 1 : 0; // Determinar el nuevo valor
+
+            $.ajax({
+                method: 'POST',
+                url: '{{ url("setUserConfig") }}', // Ruta para actualizar la configuración
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    codusuario: codusuario,
+                    field: fieldName, 
+                    value: check
+                },
+                success: function(res){
+                    console.log("Configuración actualizada:", res);
+                },
+                error: function(err){
+                    console.error("Error al actualizar:", err);
+                }
+            });
+        });
+    })
+</script>
 @endsection

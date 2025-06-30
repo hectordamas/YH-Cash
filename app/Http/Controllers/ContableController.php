@@ -11,6 +11,7 @@ class ContableController extends Controller
     public function index()
     {
         $contables = Contable::all();
+        
         return view('contable.index', [
             'contables' => $contables
         ]);
@@ -24,7 +25,13 @@ class ContableController extends Controller
 
 
     public function store(Request $request)
-    {
+    {    
+        $validated = $request->validate([
+            'type' => 'required',
+            'name' => 'required',
+            'codigo' => 'required',
+        ]);
+
         $contable = new Contable();
         $contable->type = $request->type;
         $contable->name= $request->name;
@@ -53,6 +60,12 @@ class ContableController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'type' => 'required',
+            'name' => 'required',
+            'codigo' => 'required',
+        ]);
+
         $contable = Contable::find($id);
         $contable->type = $request->type;
         $contable->name= $request->name;

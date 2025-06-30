@@ -56,11 +56,19 @@ class ExpensesController extends Controller
             'concepto' => 'required',
             'descripcion' => 'required',
             'empresa' => 'required',
-            'banco' => 'nrequired',
-            'caja' => 'required',
             'proveedor' => 'required',
             'contable' => 'required',
         ]);
+
+        if($request->input('forma-de-pago') == 'Efectivo'){
+            $validated = $request->validate([
+                'caja' => 'required',
+            ]);
+        }else{
+            $validated = $request->validate([
+                'banco' => 'required',
+            ]);
+        }
 
         $cash = Cash::find($request->input('caja'));
 
@@ -153,11 +161,19 @@ class ExpensesController extends Controller
             'concepto' => 'required',
             'descripcion' => 'required',
             'empresa' => 'required',
-            'banco' => 'nrequired',
-            'caja' => 'required',
             'proveedor' => 'required',
             'contable' => 'required',
         ]);
+
+        if($request->input('forma-de-pago') == 'Efectivo'){
+            $validated = $request->validate([
+                'caja' => 'required',
+            ]);
+        }else{
+            $validated = $request->validate([
+                'banco' => 'required',
+            ]);
+        }
         
         $expense = Expense::find($id);
         $expense->fecha = $request->input('fecha');

@@ -41,10 +41,23 @@ class ActionsController extends Controller
     }
 
     public function changePassword(Request $request, $id){
+        $request->validate([
+            'password' => 'required',
+        ]);
         $user = User::find($id);
         $user->password = bcrypt($request->password);
         $user->save();
 
         return redirect()->back()->with('message', 'Contraseña actualizada con éxito!');
     }
+
+    public function setUserConfig(Request $request) {
+
+        $user = User::find($request->id);
+        $user->inactivo = $request->value;
+        $user->save();
+
+        return response()->json(['success' => 'Configuración actualizada']);
+    }
+
 }

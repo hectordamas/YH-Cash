@@ -26,6 +26,13 @@ class ProvidersController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'type' => 'required',
+            'number' => 'required',
+            'name' => 'required',
+            'address' => 'required',
+        ]);
+
         $provider = Provider::where('number', $request->rif)->where('type', $request->type)->first();
 
         if($provider){
@@ -56,6 +63,13 @@ class ProvidersController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'type' => 'required',
+            'number' => 'required',
+            'name' => 'required',
+            'address' => 'required',
+        ]);
+
         $provider = Provider::find($id);
         $provider->type = $request->type;
         $provider->number = $request->rif;

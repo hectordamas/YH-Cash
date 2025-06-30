@@ -307,6 +307,8 @@
 @endif
 
     @yield('chart')
+
+    @yield('scripts')
 </body>
 
 </html>

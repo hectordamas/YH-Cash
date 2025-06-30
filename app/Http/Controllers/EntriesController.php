@@ -22,6 +22,8 @@ class EntriesController extends Controller
         $request->validate([
             'monto' => 'required|min:0.01',
             'descripcion' => 'required',
+            'caja' => 'required',
+            'contable' => 'required',
         ]);
 
         $entry = new Entry();
@@ -52,6 +54,8 @@ class EntriesController extends Controller
         $request->validate([
             'monto' => 'required|min:0.01',
             'descripcion' => 'required',
+            'caja' => 'required',
+            'contable' => 'required',
         ]);
 
         $entry = new Entry();

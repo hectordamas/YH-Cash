@@ -50,7 +50,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/ex/actions', [App\Http\Controllers\ActionsController::class, 'reverse']);
     Route::get('/revertidos', [App\Http\Controllers\ActionsController::class, 'revertidos']);
 
-    Route::post('/changePassword/{id}', [App\Http\Controllers\ActionsController::class, 'changePassword']);
+    Route::post('changePassword/{id}', [App\Http\Controllers\ActionsController::class, 'changePassword']);
+    Route::post('setUserConfig', [App\Http\Controllers\ActionsController::class, 'setUserConfig']);
 
     Route::get('/closure/create/{id}', [App\Http\Controllers\ClosureController::class, 'create']);
     Route::post('/closure/store', [App\Http\Controllers\ClosureController::class, 'store']);

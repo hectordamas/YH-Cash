@@ -24,6 +24,11 @@ class CashController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required',
+            'currency' => 'required',
+        ]);
+
         $cash = new Cash();
         $cash->name = $request->name;
         $cash->currency = $request->currency;
