@@ -11,6 +11,9 @@ class SettingsController extends Controller
 
     public function index()
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         return view('settings.index');
     }
 
@@ -23,6 +26,9 @@ class SettingsController extends Controller
 
     public function store(Request $request)
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         // Validación
         $request->validate([
             'login_video' => 'nullable|mimes:mp4|max:20480', // 20MB

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contable;
+use Auth;
 
 class ContableController extends Controller
 {
@@ -20,12 +21,18 @@ class ContableController extends Controller
 
     public function create()
     {
+        if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         return view('contable.create');
     }
 
 
     public function store(Request $request)
     {    
+        if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $validated = $request->validate([
             'type' => 'required',
             'name' => 'required',

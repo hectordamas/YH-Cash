@@ -18,12 +18,19 @@ class CashController extends Controller
 
     public function create()
     {
+        if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
+
         return view('cash.create');
     }
 
 
     public function store(Request $request)
     {
+        if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $validated = $request->validate([
             'name' => 'required',
             'currency' => 'required',

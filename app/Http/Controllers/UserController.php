@@ -11,6 +11,9 @@ class UserController extends Controller
 
     public function index()
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $users = User::orderBy('id', 'desc')->get();
         
         return view('users.index', compact('users'));
@@ -19,12 +22,18 @@ class UserController extends Controller
 
     public function create()
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         return view('users.create');
     }
 
 
     public function store(Request $request)
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         // Validación de los datos
         $request->validate([
             'name' => 'required|string|max:255',
@@ -53,6 +62,9 @@ class UserController extends Controller
 
     public function edit($id)
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $user = User::find($id);
 
         return view('users.edit', compact('user'));
@@ -60,6 +72,9 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         // Validación de los datos
         $request->validate([
             'name' => 'required|string|max:255',

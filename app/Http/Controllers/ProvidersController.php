@@ -20,12 +20,18 @@ class ProvidersController extends Controller
 
     public function create()
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         return view('providers.create');
     }
 
 
     public function store(Request $request)
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $validated = $request->validate([
             'type' => 'required',
             'number' => 'required',
@@ -52,6 +58,9 @@ class ProvidersController extends Controller
 
     public function edit($id)
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $provider = Provider::find($id);
 
         return view('providers.edit', [
@@ -63,6 +72,9 @@ class ProvidersController extends Controller
 
     public function update(Request $request, $id)
     {
+                if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $validated = $request->validate([
             'type' => 'required',
             'number' => 'required',

@@ -35,6 +35,9 @@ class ExpensesController extends Controller
 
     public function create()
     {
+        if(Auth::user()->role != 'Gerente' || Auth::user()->role != 'Analista'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         return view('expenses.create', [
             'companies' => Company::all(),
             'cashes' => Cash::all(),
@@ -47,7 +50,9 @@ class ExpensesController extends Controller
 
     public function store(Request $request)
     {
-
+        if(Auth::user()->role != 'Gerente' || Auth::user()->role != 'Analista'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $validated = $request->validate([
             'fecha' => 'required',
             'monto' => 'required|min:0.01',
@@ -137,6 +142,9 @@ class ExpensesController extends Controller
 
     public function edit($id)
     {
+        if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $expense = Expense::find($id);
 
         return view('expenses.edit', [
@@ -152,7 +160,9 @@ class ExpensesController extends Controller
 
     public function update(Request $request, $id)
     {
-        
+        if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $validated = $request->validate([
             'fecha' => 'required',
             'monto' => 'required|min:0.01',
@@ -195,6 +205,9 @@ class ExpensesController extends Controller
 
     public function destroy($id)
     {
+        if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
        $expense = Expense::findOrFail($id);
        $expense->delete();
 

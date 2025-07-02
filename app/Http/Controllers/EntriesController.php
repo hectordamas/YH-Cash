@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Entry;
 use App\Models\Cash;
+use Auth;
 
 class EntriesController extends Controller
 {
 
     public function create()
     {
+        if(Auth::user()->role != 'Gerente' || Auth::user()->role != 'Analista'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         return view('entries.create', [
             'cashes' => \App\Models\Cash::all(),
             'contables' => \App\Models\Contable::where('type', 'Ingreso')->get(),
@@ -26,6 +30,10 @@ class EntriesController extends Controller
             'contable' => 'required',
         ]);
 
+        if(Auth::user()->role != 'Gerente' || Auth::user()->role != 'Analista'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
+
         $entry = new Entry();
         $entry->monto = $request->input('monto');
         $entry->descripcion = $request->input('descripcion');
@@ -39,6 +47,9 @@ class EntriesController extends Controller
 
     public function edit($id)
     {
+        if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
         $entry = Entry::find($id);
 
         return view('entries.edit', [
@@ -58,6 +69,10 @@ class EntriesController extends Controller
             'contable' => 'required',
         ]);
 
+        if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
+
         $entry = new Entry();
         $entry->monto = $request->input('monto');
         $entry->descripcion = $request->input('descripcion');
@@ -70,6 +85,9 @@ class EntriesController extends Controller
 
     public function destroy($id)
     {
+        if(Auth::user()->role != 'Gerente'){
+            return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
+        }
        $entry = Entry::findOrFail($id);
        $entry->delete();
 
