@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Expense;
 use App\Models\User;
+use Auth;
 
 class ActionsController extends Controller
 {

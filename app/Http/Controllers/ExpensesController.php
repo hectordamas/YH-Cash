@@ -10,6 +10,7 @@ use App\Models\Contable;
 use App\Models\Bank;
 use App\Models\Expense;
 use Carbon\Carbon;
+use Auth;
 
 class ExpensesController extends Controller
 {

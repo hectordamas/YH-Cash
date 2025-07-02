@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cash;
 use App\Models\Entry;
 use App\Models\Expense;
+use Auth;
 
 class CashController extends Controller
 {

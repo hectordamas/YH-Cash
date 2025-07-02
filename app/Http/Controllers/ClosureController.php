@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Cash;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Auth;
 
 class ClosureController extends Controller
 {
