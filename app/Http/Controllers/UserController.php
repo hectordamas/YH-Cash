@@ -12,7 +12,7 @@ class UserController extends Controller
 
     public function index()
     {
-                if(Auth::user()->role != 'Gerente'){
+        if(Auth::user()->role != 'Gerente'){
             return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
         }
         $users = User::orderBy('id', 'desc')->get();
@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function create()
     {
-                if(Auth::user()->role != 'Gerente'){
+        if(Auth::user()->role != 'Gerente'){
             return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
         }
         return view('users.create');
@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-                if(Auth::user()->role != 'Gerente'){
+        if(Auth::user()->role != 'Gerente'){
             return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
         }
         // Validación de los datos
@@ -63,7 +63,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-                if(Auth::user()->role != 'Gerente'){
+        if(Auth::user()->role != 'Gerente'){
             return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
         }
         $user = User::find($id);

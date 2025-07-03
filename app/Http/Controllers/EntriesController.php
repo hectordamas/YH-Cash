@@ -12,7 +12,7 @@ class EntriesController extends Controller
 
     public function create()
     {
-        if(Auth::user()->role != 'Gerente' || Auth::user()->role != 'Analista'){
+        if (!in_array(Auth::user()->role, ['Gerente', 'Analista'])) {
             return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
         }
         return view('entries.create', [
@@ -30,7 +30,7 @@ class EntriesController extends Controller
             'contable' => 'required',
         ]);
 
-        if(Auth::user()->role != 'Gerente' || Auth::user()->role != 'Analista'){
+        if (!in_array(Auth::user()->role, ['Gerente', 'Analista'])) {
             return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
         }
 

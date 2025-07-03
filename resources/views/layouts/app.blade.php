@@ -125,13 +125,6 @@
 
 
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ url('history-filter') }}" >
-                    <i class="fas fa-history"></i>
-                    <span>Histórico de Operaciones</span>
-                </a>
-            </li>
-
 
             @if(Auth::user()->role == 'Gerente')
             <li class="nav-item">

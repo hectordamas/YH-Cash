@@ -36,7 +36,7 @@ class ExpensesController extends Controller
 
     public function create()
     {
-        if(Auth::user()->role != 'Gerente' || Auth::user()->role != 'Analista'){
+        if (!in_array(Auth::user()->role, ['Gerente', 'Analista'])) {
             return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
         }
         return view('expenses.create', [
@@ -51,7 +51,7 @@ class ExpensesController extends Controller
 
     public function store(Request $request)
     {
-        if(Auth::user()->role != 'Gerente' || Auth::user()->role != 'Analista'){
+        if (!in_array(Auth::user()->role, ['Gerente', 'Analista'])) {
             return redirect()->back()->with('error', 'No tienes permisos para acceder a esta ruta');        
         }
         $validated = $request->validate([
