@@ -102,6 +102,7 @@ class ExpensesController extends Controller
         $expense->cash_id = $request->input('caja');
         $expense->provider_id = $request->input('proveedor');
         $expense->contable_id = $request->input('contable');
+        $expense->user_name = Auth::user()->name;
         $expense->save();
 
         if(isset($cash)){

@@ -21,6 +21,7 @@
                                 <th>Banco</th>
                                 <th>Caja</th>
                                 <th>Monto</th>
+                                <th>Usuario</th>
                                 @if(Auth::user()->role == 'Gerente')
                                 <th>Acciones</th>
                                 @endif
@@ -38,6 +39,7 @@
                                     <td>{{isset($e->bank) ? $e->bank->name : 'N/A'}}</td>
                                     <td>{{isset($e->cash) ? $e->cash->name : 'N/A'}}</td>
                                     <td>${{ number_format($e->monto, 2, '.', ',') }}</td>
+                                    <td>{{ $e->user_name }}</td>
                                     @if(Auth::user()->role == 'Gerente')
                                     <td>
                                         <a href="{{ route('expenses.edit', $e->id) }}" class="btn btn-sm btn-primary" title="Editar">
@@ -58,7 +60,7 @@
                         </tbody>
                         <tfoot class="table-dark">
                             <tr>
-                                <td colspan="{{ Auth::user()->role == 'Gerente' ? '10' : '9' }}" class="text-center">
+                                <td colspan="{{ Auth::user()->role == 'Gerente' ? '11' : '10' }}" class="text-center">
                                     <h5><strong>Total: </strong> ${{number_format($expenses->where('trash', NULL)->sum('monto'), 2, '.', ',')}}</h5>
                                 </td>
                             </tr>
